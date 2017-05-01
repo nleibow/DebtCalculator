@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- <script src="app.js"></script> -->
+<script type="text/javascript">
+ function myJsFunction(){
+    var monthly=document.getElementById('monthly');
+    var rate=document.getElementById('rate');
+    var totalDebt=document.getElementById('totalDebt');
+    var rateMonthly = rate.value/12/100;
+    var oneMinus = 1-rateMonthly*totalDebt.value/monthly.value;
+    var timeLeftTop = -1*Math.log10(oneMinus);
+    var timeLeftBottom =Math.log10(1+rateMonthly);
+    var timeFinal = Math.ceil(timeLeftTop/timeLeftBottom);
+    document.getElementById('timeFinals').innerHTML= timeFinal + " months left until debt is fully paid off or a bit more than "+Math.ceil(timeFinal/12)+" years remaining";
+ }
+</script>
+
+<head>
+	<title>Debt Calculator</title>
+</head>
+<body>
+<h1 class="jumbotron" style="text-align: center;">Calculate How Long Until Your Debt Is Been Paid Off</h1>
+<ul class="list-group" style="text-align: center;">
+<li class="list-group-item">Enter Total Debt Here: <input style="float: right; border-color: black;" id="totalDebt" name="Amount of Debt in USD" value=""></li>
+<li class="list-group-item">Enter APR: <input style="float: right; border-color: black;" id="rate" type="" name="Yearly Rate" value=""></li>
+<li class="list-group-item">Enter Desired Monthly Payment Here: 
+<input style="float: right; border-color: black;" id="monthly" type="" name="Monthly Payment USD" value=""></li>
+<input type="submit" name="" onClick="myJsFunction()" value="Calculate How many Months left until ">
+</ul>
+<h1 style="text-align: center; " class= "jumbotron" id="timeFinals"></h1>
+
+</body>
+
+</html>
